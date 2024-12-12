@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParameterStore } from "../store/useParameterStore";
-import { useConnectionStore } from "../store/useConnectionStore";
+import useConnectionStore from "../store/useConnectionStore";
 import { useSimulationStore } from "../store/useSimulationStore";
 import { Fab } from "@mui/material";
 import { Replay } from "@mui/icons-material";
@@ -31,7 +31,7 @@ function ReloadButton() {
 
   return (
     <Fab variant="outlined" onClick={handleReloadCommand}>
-      <Replay></Replay>
+      <Replay />
     </Fab>
   );
 }
