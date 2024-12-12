@@ -16,6 +16,7 @@ function PlayButton() {
     const playCommand = {
       type: "play",
       exp_id: experimentId,
+      //sync: true,
     };
     sendMessage(playCommand);
     //sucess notification

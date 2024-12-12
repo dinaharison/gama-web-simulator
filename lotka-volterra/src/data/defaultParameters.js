@@ -5,7 +5,7 @@ export const defaultParameters = [
     name: "Prey birth rate",
     id: "preyBirthRate",
     min: 0,
-    max: 1,
+    max: 2,
     step: 0.001,
   },
   {
@@ -60,6 +60,6 @@ export const defaultParameters = [
     id: "integrationStep",
     min: 0,
     max: 1,
-    step: 1,
+    step: 0.001,
   },
 ];
