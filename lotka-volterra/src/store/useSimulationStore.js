@@ -13,4 +13,7 @@ export const useSimulationStore = create((set) => ({
   setData: (newData) => {
     set((state) => ({ ...state, data: [...state.data, newData] }));
   },
+  resetData: () => {
+    set((state) => ({ ...state, data: [] }));
+  },
 }));
