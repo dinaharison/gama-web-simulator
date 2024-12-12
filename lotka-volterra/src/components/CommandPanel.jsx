@@ -3,6 +3,7 @@ import { Stack } from "@mui/material";
 import ParameterModal from "./ParameterModal";
 import PlayButton from "./PlayButton";
 import ReloadButton from "./ReloadButton";
+import PauseButton from "./PauseButton";
 
 function CommandPanel() {
   return (
@@ -17,6 +18,7 @@ function CommandPanel() {
     >
       <ParameterModal />
       <PlayButton />
+      <PauseButton />
       <ReloadButton />
     </Stack>
   );

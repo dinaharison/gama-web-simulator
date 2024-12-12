@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useLayoutEffect } from "react";
 import useWebSocket from "react-use-websocket";
 import useConnectionStore from "../store/useConnectionStore";
 import configs from "../data/config";
@@ -44,7 +44,7 @@ const useConnection = () => {
   const { parameters } = useParameterStore();
   const { setData } = useSimulationStore();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (lastJsonMessage) {
       updateLastMessage(lastJsonMessage);
       if (
