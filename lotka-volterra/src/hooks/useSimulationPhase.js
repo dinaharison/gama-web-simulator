@@ -64,7 +64,6 @@ export default function useSimulationPhase(data) {
           ]), // [prey, predator]
           color: "blue",
           symbolSize: 8,
-          smooth: true,
           showSymbol: false,
         },
       ],
