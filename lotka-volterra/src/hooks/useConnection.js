@@ -15,7 +15,7 @@ const loadModelJSON = {
   model: "/opt/gama-platform/headless/PredatorPrey/Lotka-Volterra.gaml",
   experiment: "maths",
   parameters: [],
-  until: "cycle>=400",
+  until: "cycle>=50",
 };
 
 /**
