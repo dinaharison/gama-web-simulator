@@ -19,15 +19,33 @@ export default function useSimulationPhase(data) {
       tooltip: {
         trigger: "axis",
         formatter: (params) => {
-          const [point] = params;
-          return `X: ${point.data[0]}, Y: ${point.data[1]}`;
+          return params
+            .map(
+              (point) =>
+                `${point.seriesName}: X: ${point.data[0]}, Y: ${point.data[1]}`
+            )
+            .join("<br/>");
         },
       },
       xAxis: {
         type: "value",
+        name: "Prey",
+        nameLocation: "middle",
+        nameTextStyle: {
+          fontSize: 14,
+        },
+        min: 0,
+        max: "dataMax",
       },
       yAxis: {
         type: "value",
+        name: "Predator",
+        nameLocation: "middle",
+        nameTextStyle: {
+          fontSize: 14,
+        },
+        min: 0,
+        max: "dataMax",
       },
       series: [
         {
@@ -46,7 +64,6 @@ export default function useSimulationPhase(data) {
           ]), // [prey, predator]
           color: "blue",
           symbolSize: 8,
-          smooth: true,
           showSymbol: false,
         },
       ],
