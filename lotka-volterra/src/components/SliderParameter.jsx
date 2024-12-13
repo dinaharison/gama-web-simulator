@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Typography, Slider, Stack } from "@mui/material";
 import MuiInput from "@mui/material/Input";
 import { styled } from "@mui/material/styles";
@@ -12,21 +12,20 @@ function SliderParameter({ props }) {
   const [sliderValue, setSliderValue] = useState(props.value);
   const debouncedValue = useDebounce(sliderValue, 400);
 
-  const handleChange = (e) => {
-    setSliderValue(e.target.value);
-  };
-
   const checkInterval = (value) => {
     if (value < props.min) {
       return props.min;
     } else if (value > props.max) {
       return props.max;
+    } else {
+      return value;
     }
   };
 
-  const handleBlur = (e) => {
-    setSliderValue(checkInterval(e.target.value));
-  };
+  const handleSliderChange = useCallback(
+    (e) => setSliderValue(checkInterval(Number(e.target.value))),
+    []
+  );
 
   useEffect(() => {
     props.changeCallback(debouncedValue);
@@ -44,15 +43,17 @@ function SliderParameter({ props }) {
           min={props.min}
           step={props.step}
           max={props.max}
-          onChange={handleChange}
+          onChange={handleSliderChange}
           aria-labelledby={props.id}
+          id={props.id}
           valueLabelDisplay="auto"
         />
-        {/* <Input
+        <Input
+          id={`${props.id}-input`}
           value={sliderValue}
           size="small"
-          onChange={handleChange}
-          onBlur={handleBlur}
+          onChange={handleSliderChange}
+          onBlur={handleSliderChange}
           inputProps={{
             step: props.step,
             min: props.min,
@@ -60,7 +61,7 @@ function SliderParameter({ props }) {
             type: "number",
             "aria-labelledby": props.id,
           }}
-        /> */}
+        />
       </Stack>
     </Stack>
   );
